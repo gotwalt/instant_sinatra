@@ -1,11 +1,13 @@
+# Rubygems / Bundler configuration pattern from http://gembundler.com/sinatra.html
 require 'rubygems'
 require 'bundler'
-require "sinatra"
-
 Bundler.require
 
+# Require the main application class.
 require "./app/app.rb"
 
-use Rack::Static, :urls => ['/stylesheets', '/javascripts'], :root => 'app/public'
+# Serve up some static assets.
+use Rack::Static, :urls => ['/stylesheets', '/javascripts'], :root => 'public'
 
+# Run the main application class. Renamespace as your heart desires.
 run Sample::App
